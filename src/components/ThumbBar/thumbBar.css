@@ -1,0 +1,19 @@
+#thumbBar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+#thumbBarButton {
+    color: white;
+    font-size: small;
+}
+
+#disabledThumbBarButton {
+    font-size: small;
+}
+
+#thumbBarIcon {
+    align-self: center;
+}
