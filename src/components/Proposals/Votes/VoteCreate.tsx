@@ -54,8 +54,7 @@ class VoteCreate extends React.Component<any, any> {
     render() {
         return (
             <div>
-                {this.props.id}
-                <Box id={this.props.id} component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} onSubmit={this.handleSubmit}>
+                <Box id={this.props.id} component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} onSubmit={this.handleSubmit} display='flex' flexDirection="column" justifyContent="center" alignItems='center'>
                     <ToggleButtonGroup color="primary" value={this.state.alignment} exclusive onChange={this.handleChange} >
                         <ToggleButton value={null} ><BallotIcon /></ToggleButton>
                         <ToggleButton value="YAY" ><CheckIcon /></ToggleButton>

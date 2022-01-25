@@ -75,15 +75,15 @@ class Assets extends React.Component<any, any> {
                 <Typography align='right' paddingTop='10px' paddingBottom='10px' paddingRight='5px' variant='h5'>Total Assets: ${Intl.NumberFormat('en-US').format(this.state.totalAssets)}</Typography>
 
                 <TableContainer component={Paper} style={{marginBottom: '10vh'}} >
-                    <Table aria-label="collapsible table">
+                    <Table size='small'>
                         <TableHead>
                             <TableRow>
                                 {/* <TableCell /> */}
-                                <TableCell>Asset</TableCell>
-                                <TableCell align="right">Qty</TableCell>
-                                <TableCell align="right">Value</TableCell>
-                                <TableCell align="right">Total</TableCell>
-                                <TableCell align="right">%</TableCell>
+                                <TableCell size='small' style={{ maxWidth: '10vw'}}>Asset</TableCell>
+                                <TableCell align="right" style={{ maxWidth: '10vw'}}>Qty</TableCell>
+                                <TableCell align="right" style={{ maxWidth: '10vw', textAlign: 'right'}}>Value</TableCell>
+                                <TableCell align="right" style={{ maxWidth: '10vw'}}>Total</TableCell>
+                                <TableCell align="right" style={{ maxWidth: '10vw'}}>%</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -93,11 +93,11 @@ class Assets extends React.Component<any, any> {
                                         <>
                                             <TableRow>
                                                 {/* <TableCell /> */}
-                                                <TableCell>{asset.asset}</TableCell>
-                                                <TableCell align="right">{asset.quantity}</TableCell>
-                                                <TableCell align="right">{asset.value}</TableCell>
-                                                <TableCell align="right">{(asset.quantity * asset.value).toFixed(2)}</TableCell>
-                                                <TableCell align="right">{((asset.quantity * asset.value) / this.state.totalAssets * 100).toFixed(2)}</TableCell>
+                                                <TableCell size='small' style={{ maxWidth: '10vw'}}>{asset.asset}</TableCell>
+                                                <TableCell align="right" style={{ maxWidth: '10vw', textAlign: 'right'}}>{asset.quantity}</TableCell>
+                                                <TableCell align="right" style={{ maxWidth: '10vw'}}>${Intl.NumberFormat('en-US').format(asset.value)}</TableCell>
+                                                <TableCell align="right" style={{ maxWidth: '10vw'}}>${Intl.NumberFormat('en-US').format(asset.quantity * asset.value)}</TableCell>
+                                                <TableCell align="right" style={{ maxWidth: '10vw'}}>{((asset.quantity * asset.value) / this.state.totalAssets * 100).toFixed(2)}%</TableCell>
                                             </TableRow>
                                             {
                                                 (JSON.parse(window.atob(this.props.token.split('.')[1])).role === "Admin") ?
