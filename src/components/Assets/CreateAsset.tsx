@@ -22,7 +22,7 @@ class CreateAsset extends React.Component<any, any> {
     }
 
     handleSubmit = (e: React.FormEvent): void => {
-        console.log(this.state)
+        // console.log(this.state)
         
         fetch(`http://localhost:5000/asset/create`, {
             method: "POST",

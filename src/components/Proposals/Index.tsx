@@ -1,5 +1,6 @@
 import React from 'react';
 import ProposalCreate from './ProposalCreate';
+import ProposalEdit from './ProposalEdit';
 import ProposalView from './ProposalView';
 
 class ProposalIndex extends React.Component<any, any> {
@@ -9,7 +10,9 @@ class ProposalIndex extends React.Component<any, any> {
             results: [],
             voteResults: [],
             showProposalView: true,
-            showCreateProposal: false
+            showCreateProposal: false,
+            showProposalEdit: false,
+            editProposal: {}
         }
     }
     
@@ -27,11 +30,14 @@ class ProposalIndex extends React.Component<any, any> {
         })
         .then(res => res.json())
         .then(data => {
+            const array = data.sort((a:any , b:any) => ( a.createdAt < b.createdAt) ? 1 : -1);
+            // console.log(array[0].createdAt);
+            
             this.setState({
-                results: data
+                results: array
             })
         })
-        .then(data => console.log(this.state.results))
+        // .then(data => console.log(this.state.results))
         .catch(err => console.log(err)
         )
     }
@@ -58,6 +64,7 @@ class ProposalIndex extends React.Component<any, any> {
             this.setState({ showProposalView: false }) :
             this.setState({
                 showCreateProposal: false,
+                showProposalEdit: false,
                 showProposalView: true
             })
     }
@@ -67,7 +74,19 @@ class ProposalIndex extends React.Component<any, any> {
             this.setState({ showCreateProposal: false }) :
             this.setState({
                 showProposalView: false,
+                showProposalEdit: false,
                 showCreateProposal: true
+            })
+    }
+
+    toggleProposalEdit = (e: React.MouseEvent, proposal: object): void => {
+        (this.state.showProposalEdit) ?
+            this.setState({ showProposalEdit: false}) :
+            this.setState({
+                showProposalView: false,
+                showCreateProposal: false,
+                showProposalEdit: true,
+                editProposal: proposal
             })
     }
 
@@ -76,12 +95,17 @@ class ProposalIndex extends React.Component<any, any> {
             <div>
                 {
                     (this.state.showProposalView) ?
-                    <ProposalView results={this.state.results} token={this.props.token} toggleCreateProposal={this.toggleCreateProposal} voteResults={this.state.voteResults} /> :
+                    <ProposalView results={this.state.results} token={this.props.token} toggleCreateProposal={this.toggleCreateProposal} voteResults={this.state.voteResults} toggleProposalView={this.toggleProposalView} fetchProposals={this.fetchProposals} fetchVotes={this.fetchVotes} toggleProposalEdit={this.toggleProposalEdit}/> :
                     null
                 }
                 {
                     (this.state.showCreateProposal) ?
                     <ProposalCreate token={this.props.token} toggleProposalView={this.toggleProposalView} fetchProposals={this.fetchProposals} fetchVotes={this.fetchVotes} /> :
+                    null
+                }
+                {
+                    (this.state.showProposalEdit) ?
+                    <ProposalEdit token={this.props.token} toggleProposalView={this.toggleProposalView} editProposal={this.state.editProposal} fetchProposals={this.fetchProposals} fetchVotes={this.fetchVotes}/> :
                     null
                 }
             </div>

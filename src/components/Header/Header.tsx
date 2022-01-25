@@ -8,7 +8,7 @@ class Header extends React.Component {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Typography variant="h4" component="div" sx={{ flexGrow: 1, paddingTop: '10px', paddingBottom: '10px'}} align='center'>
-                        To The Moon, LLC
+                        Your Investment Club
                     </Typography>
                 </AppBar>
             </Box>

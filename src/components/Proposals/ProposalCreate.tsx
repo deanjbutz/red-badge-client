@@ -27,8 +27,8 @@ class ProposalCreate extends React.Component <any, any> {
     }
 
     handleSubmit = (e: React.FormEvent): void => {
-        console.log(this.state);
-        console.log(this.props.token);
+        // console.log(this.state);
+        // console.log(this.props.token);
         
         fetch(`http://localhost:5000/proposal`, {
             method: "POST",
@@ -51,16 +51,16 @@ class ProposalCreate extends React.Component <any, any> {
             <div>
                 <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch'}, }} onSubmit={this.handleSubmit} display='flex' flexDirection="column" justifyContent="center" alignItems='center'>
                     <TextField required id="outlined-required" label="Ticker" placeholder='Ticker' name="ticker1" value={this.state.ticker1} onChange={this.handleChange}/>
-                    <TextField required id="outlined-required" label="Quantity" placeholder='# of Shares' name='quantity1' value={null} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-                    <TextField required id="outlined-required" label="Purchase Price" placeholder='$0.00' name='value1' value={null} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '([0-9]|[0-9].[0-9])*' }} />
+                    <TextField required id="outlined-required" label="Quantity" placeholder='# of Shares' name='quantity1' value={undefined} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+                    <TextField required id="outlined-required" label="Purchase Price" placeholder='$0.00' name='value1' value={undefined} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '([0-9]|[0-9].[0-9])*' }} />
 
                     <TextField id="outlined" label="Ticker 2 (optional)" placeholder='Ticker' name="ticker2" value={this.state.ticker2} onChange={this.handleChange}/>
-                    <TextField id="outlined" label="Quantity 2 (optional)" placeholder='# of Shares' name='quantity2' value={null} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-                    <TextField id="outlined" label="Purchase Price 2 (optional)" placeholder='$0.00' name='value2' value={null} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '([0-9]|[0-9].[0-9])*' }} />
+                    <TextField id="outlined" label="Quantity 2 (optional)" placeholder='# of Shares' name='quantity2' value={undefined} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+                    <TextField id="outlined" label="Purchase Price 2 (optional)" placeholder='$0.00' name='value2' value={undefined} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '([0-9]|[0-9].[0-9])*' }} />
 
                     <TextField id="outlined" label="Ticker 3 (optional)" placeholder='Ticker' name="ticker3" value={this.state.ticker3} onChange={this.handleChange}/>
-                    <TextField id="outlined" label="Quantity 3 (optional)" placeholder='# of Shares' name='quantity3' value={null} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-                    <TextField id="outlined" label="Purchase Price 3 (optional)" placeholder='$0.00' name='value3' value={null} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '([0-9]|[0-9].[0-9])*' }} />
+                    <TextField id="outlined" label="Quantity 3 (optional)" placeholder='# of Shares' name='quantity3' value={undefined} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+                    <TextField id="outlined" label="Purchase Price 3 (optional)" placeholder='$0.00' name='value3' value={undefined} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '([0-9]|[0-9].[0-9])*' }} />
 
                     <Button type="submit" variant="contained" endIcon={<SendIcon />} size='large' >Submit Proposal</Button>
                 </Box>
