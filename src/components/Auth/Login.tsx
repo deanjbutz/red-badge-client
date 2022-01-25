@@ -41,7 +41,7 @@ class Login extends React.Component <any, any> {
     render() {
         return(
             <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch'}, }} onSubmit={this.handleSubmit} display='flex' flexDirection='column' justifyContent="center" alignItems='center' paddingTop='10vh' paddingBottom='10vh'>
-                <TextField required id="outlined-required" label="Email" placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} />
+                <TextField required id="outlined-required" label="Email" placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} autoComplete='email' />
                 <TextField required id="outlined-password-input" label="Password" type="password" autoComplete="current-password" name='password' value={this.state.password} onChange={this.handleChange} />
                 <Button type="submit" variant="contained" endIcon={<LoginIcon />} size='large' style={{marginTop: '3vh'}}>Login</Button>
             </Box>

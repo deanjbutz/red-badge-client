@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Button, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 class EditAsset extends React.Component <any, any> {
     constructor(props: any) {
@@ -22,7 +23,7 @@ class EditAsset extends React.Component <any, any> {
     }
 
     handleSubmit = (e: React.FormEvent): void => {
-        console.log(this.state)
+        // console.log(this.state)
         
         fetch(`http://localhost:5000/asset/${this.state.id}`, {
             method: "PUT",
@@ -49,10 +50,13 @@ class EditAsset extends React.Component <any, any> {
                 <Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} onSubmit={this.handleSubmit} display='flex' flexDirection='column' justifyContent="center" alignItems='center' paddingTop="5vh" paddingBottom="5vh">
                     <TextField required id="outlined-required" label="Asset" placeholder='AMZN, Cash, etc.' name="asset" value={this.state.asset} onChange={this.handleChange} />
                     <TextField required id="outlined-required" label="Quantity" placeholder='# of Shares' name='quantity' value={this.state.quantity} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-                    <TextField required id="outlined-required" label="Value" placeholder='$0.00' name='value' value={this.state.value} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '[0-9].[0-9]*' }} />
+                    <TextField required id="outlined-required" label="Value" placeholder='$0.00' name='value' value={this.state.value} onChange={this.handleChange} inputProps={{ inputMode: 'numeric', pattern: '([0-9].[0-9]|[0-9])*' }} />
                     <Button type="submit" variant="contained" endIcon={<SendIcon />} size='large' style={{ marginTop: '3vh' }}>Edit Asset</Button>
                 </Box>
-                <Button onClick={this.props.toggleAssets} variant="contained" endIcon={<SendIcon />} size='large'>Show Assets</Button>
+                <Box display='flex' justifyContent="center" alignItems='center' paddingTop='10px'>
+                <Button onClick={this.props.toggleAssets} variant="outlined" startIcon={<ArrowBackIcon />} size='large'>Back to Assets</Button>
+                </Box>
+                
             </div>
         )
     }

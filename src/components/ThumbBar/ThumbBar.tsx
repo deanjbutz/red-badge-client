@@ -16,11 +16,11 @@ class ThumbBar extends React.Component <any, any> {
     }
 
     componentDidMount() {
-        console.log(`ThumbBar.tsx componentDidMount`);
+        // console.log(`ThumbBar.tsx componentDidMount`);
     }
 
     componentDidUpdate() {
-        console.log(`ThumbBar.tsx componentDidUpdate`);
+        // console.log(`ThumbBar.tsx componentDidUpdate`);
         
     }
 

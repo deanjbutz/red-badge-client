@@ -36,7 +36,7 @@ class AuthIndex extends React.Component<any, any> {
                         </Box> :
                         <Box display='flex' flexDirection='column' justifyContent="center" alignItems="center">
                             <Register updateToken={this.props.updateToken} />
-                            <Button onClick={this.toggleRegister} variant='outlined'>
+                            <Button onClick={this.toggleRegister} variant='outlined' style={{marginBottom: '12vh'}}>
                                 <Typography>
                                     Already a Member? Login Here
                                 </Typography>
